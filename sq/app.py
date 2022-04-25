@@ -36,9 +36,7 @@ def search_by_title(title):
 @app.route("/movie/<int:start>/to/<int:end>")
 def search_by_period(start, end):
     query = f"""
-        SELECT
-            title
-            , release_year
+            SELECT title, release_year
             FROM netflix
             WHERE release_year BETWEEN {start} AND {end}
             ORDER BY release_year
@@ -124,6 +122,7 @@ def get_actors(name1='Rose McIver', name2='Ben Lamb'):
     print(result)
 
 
+# get_actors()
 
 
 def get_films(type_film, release_year, genre):
@@ -143,8 +142,3 @@ def get_films(type_film, release_year, genre):
             "type": film[2]
         })
     return response_json
-
-
-
-if __name__ == '__main__':
-    main()
